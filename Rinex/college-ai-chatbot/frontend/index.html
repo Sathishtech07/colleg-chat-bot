@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunrise Institute of Technology — College AI Chatbot</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- NAVIGATION BAR                                               -->
+  <!-- ============================================================ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Chatbot</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chatbot.html" class="nav-link">Chatbot</a>
+        <a href="departments.html" class="nav-link">Departments</a>
+        <a href="faculty.html" class="nav-link">Faculty</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="college-info.html" class="nav-link">College Info</a>
+        <a href="admin-login.html" class="nav-link nav-admin-btn">🔑 Admin</a>
+        
+        <!-- Dynamic Login/Register or User Profile (Injected by app.js) -->
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link btn-nav">Register</a>
+        </div>
+      </div>
+
+      <!-- Mobile Hamburger Toggle Button -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- HERO SECTION                                                 -->
+  <!-- ============================================================ -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Hero Text Column -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>✨ Powered by AI & Smart Search</span>
+          </div>
+          <h1 class="hero-title">
+            Your 24/7 Smart Campus Assistant for <span class="highlight">Sunrise Institute</span>
+          </h1>
+          <p class="hero-description">
+            Get instant answers to all your college queries — timings, CSE department info, faculty details, admissions, library rules, leave applications, and upcoming events!
+          </p>
+          <div class="hero-actions">
+            <a href="chatbot.html" class="btn btn-primary btn-lg">
+              💬 Ask Chatbot Now
+            </a>
+            <a href="college-info.html" class="btn btn-secondary btn-lg">
+              ℹ️ College Overview
+            </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Instant Replies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Departments</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Free for Students</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Chat Preview Column -->
+        <div class="hero-visual">
+          <div class="chat-preview-card">
+            <div class="chat-preview-header">
+              <div class="chat-preview-avatar">🤖</div>
+              <div>
+                <strong>SIT College Bot</strong>
+                <span class="status-online">● Online</span>
+              </div>
+            </div>
+            <div class="chat-preview-body">
+              <div class="message bot">
+                👋 Hello! Welcome to Sunrise Institute of Technology. How can I help you today?
+              </div>
+              <div class="message user">
+                What are the CSE department timings and HOD details?
+              </div>
+              <div class="message bot">
+                Dr. R. K. Sharma is the HOD of CSE. Office: Room 201, CSE Block. Timings: Mon-Sat, 8:30 AM to 4:30 PM. 🎓
+              </div>
+            </div>
+            <div class="chat-preview-footer">
+              <a href="chatbot.html" class="btn btn-block btn-gold">Try Live Demo →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- QUICK ACCESS CARDS SECTION                                   -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Explore College Portal</h2>
+        <p class="section-subtitle">Quick access to essential campus resources and information</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid grid-4">
+        
+        <!-- Card 1: AI Chatbot -->
+        <div class="quick-link-card">
+          <div class="card-icon">🤖</div>
+          <h3>AI Chatbot</h3>
+          <p>Ask questions about admissions, fees, timings, and campus facilities in natural language.</p>
+          <a href="chatbot.html" class="link-btn">Start Chatting →</a>
+        </div>
+
+        <!-- Card 2: Departments -->
+        <div class="quick-link-card">
+          <div class="card-icon">🏫</div>
+          <h3>Departments</h3>
+          <p>Explore CSE, ECE, Mechanical, Civil, and IT departments with HOD contacts & lab info.</p>
+          <a href="departments.html" class="link-btn">View Departments →</a>
+        </div>
+
+        <!-- Card 3: Faculty Directory -->
+        <div class="quick-link-card">
+          <div class="card-icon">👨‍🏫</div>
+          <h3>Faculty Directory</h3>
+          <p>Find professor contact numbers, email addresses, office locations, and designations.</p>
+          <a href="faculty.html" class="link-btn">Find Faculty →</a>
+        </div>
+
+        <!-- Card 4: Events & News -->
+        <div class="quick-link-card">
+          <div class="card-icon">📅</div>
+          <h3>Events & News</h3>
+          <p>Stay updated with annual fests, technical workshops, sports meets, and exam schedules.</p>
+          <a href="events.html" class="link-btn">Check Events →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FEATURE HIGHLIGHTS                                           -->
+  <!-- ============================================================ -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="grid grid-2" style="align-items: center;">
+        <div>
+          <span class="badge badge-gold mb-2">Why Use SIT Chatbot?</span>
+          <h2 class="section-title mb-3">Instant Answers Without Waiting in Queues</h2>
+          <p class="mb-4">
+            No more visiting administration offices or searching lengthy PDF handbooks. 
+            The SIT Chatbot provides immediate, accurate answers to over 25+ frequent college queries.
+          </p>
+
+          <ul class="feature-list">
+            <li>✅ <strong>Fast Keyword Matching:</strong> Instant answers even when offline.</li>
+            <li>✅ <strong>Database Integration:</strong> Java & MySQL dynamic backend lookup.</li>
+            <li>✅ <strong>Mobile Friendly:</strong> Works smoothly on phones, tablets & desktops.</li>
+            <li>✅ <strong>Admin Portal:</strong> Faculty & Admins can easily add new Q&As.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="info-card-box">
+            <h3>Popular Questions Students Ask</h3>
+            <div class="sample-q-list">
+              <a href="chatbot.html?q=timings" class="sample-q-chip">⏱️ What are the college timings?</a>
+              <a href="chatbot.html?q=cse+hod" class="sample-q-chip">👨‍🏫 Who is the HOD of CSE?</a>
+              <a href="chatbot.html?q=library" class="sample-q-chip">📚 Where is the library?</a>
+              <a href="chatbot.html?q=leave" class="sample-q-chip">📝 How to apply for leave?</a>
+              <a href="chatbot.html?q=admission" class="sample-q-chip">📋 Admission requirements?</a>
+              <a href="chatbot.html?q=contact" class="sample-q-chip">📞 College contact details?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                       -->
+  <!-- ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <span>🎓</span> Sunrise Institute of Technology
+          </div>
+          <p>
+            Accredited by AICTE & Affiliated to State Technological University. 
+            Empowering future engineers with innovative technology.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="faculty.html">Faculty Directory</a></li>
+            <li><a href="events.html">Events & News</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="college-info.html">College Timings</a></li>
+            <li><a href="college-info.html#admission">Admissions</a></li>
+            <li><a href="college-info.html#contact">Contact Us</a></li>
+            <li><a href="admin-login.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <p>📍 SIT Campus Road, Knowledge Park, City - 560001</p>
+          <p>📞 Phone: +91 (080) 2345-6789</p>
+          <p>✉️ Email: info@sit.edu</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p>© 2026 Sunrise Institute of Technology. All Rights Reserved. | College AI Chatbot Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Departments — Sunrise Institute of Technology</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Chatbot</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chatbot.html" class="nav-link">Chatbot</a>
+        <a href="departments.html" class="nav-link active">Departments</a>
+        <a href="faculty.html" class="nav-link">Faculty</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="college-info.html" class="nav-link">College Info</a>
+        <a href="admin-login.html" class="nav-link nav-admin-btn">🔑 Admin</a>
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link btn-nav">Register</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container text-center">
+      <span class="badge badge-gold mb-2">Academic Excellence</span>
+      <h1>Departments & Programs</h1>
+      <p class="hero-subtext">Discover our engineering departments, HOD leadership, and specialized curriculum at SIT.</p>
+    </div>
+  </header>
+
+  <!-- MAIN DEPARTMENTS CONTAINER -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Container for dynamic or fallback department cards -->
+      <div id="departments-grid" class="grid grid-3">
+        
+        <!-- Fallback static cards shown while loading / if API is offline -->
+        <div class="dept-card">
+          <div class="dept-icon">💻</div>
+          <span class="badge badge-gold mb-2">Code: CSE</span>
+          <h3>Computer Science & Engineering</h3>
+          <p class="dept-desc">Focuses on AI, Data Science, Software Engineering, Cloud Computing, and Cybersecurity.</p>
+          <div class="dept-meta">
+            <div><strong>HOD:</strong> Dr. R. K. Sharma</div>
+            <div><strong>Office:</strong> CSE Block, Room 201</div>
+            <div><strong>Email:</strong> <a href="mailto:cse.hod@sit.edu">cse.hod@sit.edu</a></div>
+          </div>
+          <a href="chatbot.html?q=Who+is+the+HOD+of+CSE" class="btn btn-outline-primary btn-block btn-sm mt-3">
+            💬 Ask Bot About CSE
+          </a>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon">⚡</div>
+          <span class="badge badge-gold mb-2">Code: ECE</span>
+          <h3>Electronics & Communication</h3>
+          <p class="dept-desc">Specializes in Embedded Systems, VLSI Design, Signal Processing, Robotics, & 5G Communications.</p>
+          <div class="dept-meta">
+            <div><strong>HOD:</strong> Dr. Anita Roy</div>
+            <div><strong>Office:</strong> ECE Block, Room 105</div>
+            <div><strong>Email:</strong> <a href="mailto:ece.hod@sit.edu">ece.hod@sit.edu</a></div>
+          </div>
+          <a href="chatbot.html?q=Who+is+the+HOD+of+ECE" class="btn btn-outline-primary btn-block btn-sm mt-3">
+            💬 Ask Bot About ECE
+          </a>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon">⚙️</div>
+          <span class="badge badge-gold mb-2">Code: MECH</span>
+          <h3>Mechanical Engineering</h3>
+          <p class="dept-desc">Covers CAD/CAM, Thermal Engineering, Mechatronics, Automotive Systems, and Industrial Design.</p>
+          <div class="dept-meta">
+            <div><strong>HOD:</strong> Prof. S. N. Verma</div>
+            <div><strong>Office:</strong> Mechanical Block, Room 302</div>
+            <div><strong>Email:</strong> <a href="mailto:mech.hod@sit.edu">mech.hod@sit.edu</a></div>
+          </div>
+          <a href="chatbot.html?q=Who+is+the+HOD+of+Mechanical" class="btn btn-outline-primary btn-block btn-sm mt-3">
+            💬 Ask Bot About Mechanical
+          </a>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon">🏗️</div>
+          <span class="badge badge-gold mb-2">Code: CIVIL</span>
+          <h3>Civil Engineering</h3>
+          <p class="dept-desc">Excellence in Structural Engineering, Geotechnical Design, Environmental Science, and Surveying.</p>
+          <div class="dept-meta">
+            <div><strong>HOD:</strong> Dr. M. K. Gupta</div>
+            <div><strong>Office:</strong> Civil Block, Room 110</div>
+            <div><strong>Email:</strong> <a href="mailto:civil.hod@sit.edu">civil.hod@sit.edu</a></div>
+          </div>
+          <a href="chatbot.html?q=Who+is+the+HOD+of+Civil" class="btn btn-outline-primary btn-block btn-sm mt-3">
+            💬 Ask Bot About Civil
+          </a>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon">🌐</div>
+          <span class="badge badge-gold mb-2">Code: IT</span>
+          <h3>Information Technology</h3>
+          <p class="dept-desc">Focuses on Web Technologies, Network Architecture, DevOps, Database Systems, & Enterprise Solutions.</p>
+          <div class="dept-meta">
+            <div><strong>HOD:</strong> Dr. Sunita Rao</div>
+            <div><strong>Office:</strong> IT Block, Room 405</div>
+            <div><strong>Email:</strong> <a href="mailto:it.hod@sit.edu">it.hod@sit.edu</a></div>
+          </div>
+          <a href="chatbot.html?q=Who+is+the+HOD+of+IT" class="btn btn-outline-primary btn-block btn-sm mt-3">
+            💬 Ask Bot About IT
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>© 2026 Sunrise Institute of Technology. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    // Fetch departments from Java Servlet API if available
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('departments-grid');
+      const data = await apiFetch('/departments');
+      
+      if (data && Array.isArray(data) && data.length > 0) {
+        grid.innerHTML = data.map(dept => `
+          <div class="dept-card">
+            <div class="dept-icon">${escapeHtml(dept.icon || '🏫')}</div>
+            <span class="badge badge-gold mb-2">Code: ${escapeHtml(dept.code)}</span>
+            <h3>${escapeHtml(dept.dept_name)}</h3>
+            <p class="dept-desc">${escapeHtml(dept.description || 'Comprehensive engineering curriculum with state-of-the-art laboratories.')}</p>
+            <div class="dept-meta">
+              <div><strong>HOD:</strong> ${escapeHtml(dept.hod_name)}</div>
+              <div><strong>Email:</strong> <a href="mailto:${escapeHtml(dept.email)}">${escapeHtml(dept.email)}</a></div>
+            </div>
+            <a href="chatbot.html?q=Who+is+the+HOD+of+${encodeURIComponent(dept.code)}" class="btn btn-outline-primary btn-block btn-sm mt-3">
+              💬 Ask Bot About ${escapeHtml(dept.code)}
+            </a>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

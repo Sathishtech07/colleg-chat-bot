@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — SIT College AI Chatbot</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Admin Portal</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home Page</a>
+        <a href="chatbot.html" class="nav-link">Chatbot</a>
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ADMIN DASHBOARD LAYOUT -->
+  <div class="admin-layout">
+    
+    <!-- SIDEBAR NAV -->
+    <aside class="admin-sidebar">
+      <div class="admin-profile-banner">
+        <div class="admin-avatar">🛡️</div>
+        <div>
+          <div class="admin-name" id="admin-welcome-name">Administrator</div>
+          <span class="badge badge-gold">System Admin</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <button class="admin-nav-item active" data-tab="qa">
+          <span>🤖 Q&A Knowledge Base</span>
+        </button>
+        <button class="admin-nav-item" data-tab="departments">
+          <span>🏫 Departments</span>
+        </button>
+        <button class="admin-nav-item" data-tab="faculty">
+          <span>👨‍🏫 Faculty Members</span>
+        </button>
+        <button class="admin-nav-item" data-tab="events">
+          <span>📅 Events & News</span>
+        </button>
+        <button class="admin-nav-item" data-tab="students">
+          <span>👥 Registered Users</span>
+        </button>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button onclick="logout()" class="btn btn-outline-danger btn-block btn-sm">
+          🚪 Logout Admin
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="admin-content">
+      
+      <!-- TOP STATS ROW -->
+      <div class="admin-stats grid grid-4 mb-4">
+        <div class="admin-stat-card">
+          <div class="stat-icon">🤖</div>
+          <div>
+            <div class="stat-value" id="stat-qa-count">0</div>
+            <div class="stat-title">Q&A Knowledge Pairs</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon">🏫</div>
+          <div>
+            <div class="stat-value" id="stat-dept-count">0</div>
+            <div class="stat-title">Departments</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon">👨‍🏫</div>
+          <div>
+            <div class="stat-value" id="stat-faculty-count">0</div>
+            <div class="stat-title">Faculty Members</div>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon">👥</div>
+          <div>
+            <div class="stat-value" id="stat-user-count">0</div>
+            <div class="stat-title">Registered Students</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- TAB 1: QA KNOWLEDGE BASE                                     -->
+      <!-- ============================================================ -->
+      <div id="panel-qa" class="admin-panel active">
+        
+        <div class="admin-section-header">
+          <h2>🤖 Chatbot Knowledge Base Management</h2>
+          <p>Add, view, and delete keyword-matched question & answer pairs used by the chatbot.</p>
+        </div>
+
+        <!-- Add Q&A Form -->
+        <div class="add-form-card mb-4">
+          <h3>➕ Add New Q&A Pair</h3>
+          <form id="add-qa-form">
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="qa-keywords">Keywords (Comma Separated)</label>
+                <input type="text" id="qa-keywords" name="keywords" class="form-control" placeholder="e.g. fee, tuition, installment, payment" required>
+              </div>
+              <div class="form-group">
+                <label for="qa-category">Category</label>
+                <select id="qa-category" name="category" class="form-control">
+                  <option value="General">General</option>
+                  <option value="Department">Department</option>
+                  <option value="Admissions">Admissions</option>
+                  <option value="Facilities">Facilities</option>
+                  <option value="Student Support">Student Support</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="qa-answer">Answer Text</label>
+              <textarea id="qa-answer" name="answer" class="form-control" rows="3" placeholder="Enter the exact answer the chatbot should display to students..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">➕ Save Q&A Pair</button>
+          </form>
+        </div>
+
+        <!-- Table of existing Q&A -->
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Keywords</th>
+                <th>Answer</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="qa-table-body">
+              <!-- Dynamically populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- TAB 2: DEPARTMENTS                                           -->
+      <!-- ============================================================ -->
+      <div id="panel-departments" class="admin-panel">
+        <div class="admin-section-header">
+          <h2>🏫 Departments Management</h2>
+          <p>Manage college departments and HOD information.</p>
+        </div>
+
+        <!-- Add Dept Form -->
+        <div class="add-form-card mb-4">
+          <h3>➕ Add New Department</h3>
+          <form id="add-dept-form">
+            <div class="grid grid-3">
+              <div class="form-group">
+                <label for="dept-name">Department Name</label>
+                <input type="text" id="dept-name" name="dept_name" class="form-control" placeholder="e.g. Artificial Intelligence" required>
+              </div>
+              <div class="form-group">
+                <label for="dept-code">Department Code</label>
+                <input type="text" id="dept-code" name="code" class="form-control" placeholder="e.g. AI & DS" required>
+              </div>
+              <div class="form-group">
+                <label for="dept-icon">Icon Emoji</label>
+                <input type="text" id="dept-icon" name="icon" class="form-control" placeholder="e.g. 🧠" value="🏫">
+              </div>
+            </div>
+
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="dept-hod">HOD Name</label>
+                <input type="text" id="dept-hod" name="hod_name" class="form-control" placeholder="e.g. Dr. P. K. Mishra" required>
+              </div>
+              <div class="form-group">
+                <label for="dept-email">Department Email</label>
+                <input type="email" id="dept-email" name="email" class="form-control" placeholder="e.g. ai.hod@sit.edu" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="dept-desc">Description</label>
+              <textarea id="dept-desc" name="description" class="form-control" rows="2" placeholder="Brief summary of department courses and labs..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">➕ Save Department</button>
+          </form>
+        </div>
+
+        <!-- Dept Table -->
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Department Name</th>
+                <th>HOD Name</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="depts-table-body">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- TAB 3: FACULTY MEMBERS                                       -->
+      <!-- ============================================================ -->
+      <div id="panel-faculty" class="admin-panel">
+        <div class="admin-section-header">
+          <h2>👨‍🏫 Faculty Members Management</h2>
+          <p>Add and manage teaching staff directory.</p>
+        </div>
+
+        <!-- Add Faculty Form -->
+        <div class="add-form-card mb-4">
+          <h3>➕ Add New Faculty Member</h3>
+          <form id="add-faculty-form">
+            <div class="grid grid-3">
+              <div class="form-group">
+                <label for="fac-name">Full Name</label>
+                <input type="text" id="fac-name" name="name" class="form-control" placeholder="e.g. Dr. Ramesh Babu" required>
+              </div>
+              <div class="form-group">
+                <label for="fac-dept">Department</label>
+                <select id="fac-dept" name="department" class="form-control" required>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Mechanical">Mechanical</option>
+                  <option value="Civil">Civil</option>
+                  <option value="Information Technology">Information Technology</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="fac-desig">Designation</label>
+                <input type="text" id="fac-desig" name="designation" class="form-control" placeholder="e.g. Assistant Professor" required>
+              </div>
+            </div>
+
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="fac-email">Email Address</label>
+                <input type="email" id="fac-email" name="email" class="form-control" placeholder="e.g. ramesh@sit.edu" required>
+              </div>
+              <div class="form-group">
+                <label for="fac-phone">Contact Phone</label>
+                <input type="text" id="fac-phone" name="phone" class="form-control" placeholder="e.g. +91 98765 43210">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">➕ Add Faculty</button>
+          </form>
+        </div>
+
+        <!-- Faculty Table -->
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="faculty-table-body">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- TAB 4: EVENTS & NEWS                                         -->
+      <!-- ============================================================ -->
+      <div id="panel-events" class="admin-panel">
+        <div class="admin-section-header">
+          <h2>📅 Campus Events Management</h2>
+          <p>Create upcoming workshops, technical fests, and sports meets.</p>
+        </div>
+
+        <!-- Add Event Form -->
+        <div class="add-form-card mb-4">
+          <h3>➕ Add New Campus Event</h3>
+          <form id="add-event-form">
+            <div class="grid grid-3">
+              <div class="form-group">
+                <label for="ev-title">Event Title</label>
+                <input type="text" id="ev-title" name="title" class="form-control" placeholder="e.g. Web Dev Bootcamp" required>
+              </div>
+              <div class="form-group">
+                <label for="ev-date">Event Date</label>
+                <input type="date" id="ev-date" name="event_date" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="ev-cat">Category</label>
+                <input type="text" id="ev-cat" name="category" class="form-control" placeholder="e.g. Workshop" value="Technical">
+              </div>
+            </div>
+
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label for="ev-time">Time</label>
+                <input type="text" id="ev-time" name="time" class="form-control" placeholder="e.g. 10:00 AM - 04:00 PM">
+              </div>
+              <div class="form-group">
+                <label for="ev-loc">Location / Venue</label>
+                <input type="text" id="ev-loc" name="location" class="form-control" placeholder="e.g. Seminar Hall A">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="ev-desc">Description</label>
+              <textarea id="ev-desc" name="description" class="form-control" rows="2" placeholder="Event schedule, registration details, and guest speakers..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">➕ Create Event</button>
+          </form>
+        </div>
+
+        <!-- Events Table -->
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="events-table-body">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- TAB 5: REGISTERED STUDENTS                                   -->
+      <!-- ============================================================ -->
+      <div id="panel-students" class="admin-panel">
+        <div class="admin-section-header">
+          <h2>👥 Registered Users & Students</h2>
+          <p>List of all registered student accounts in the database.</p>
+        </div>
+
+        <!-- Students Table -->
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Student Name</th>
+                <th>Email Address</th>
+                <th>Role</th>
+                <th>Joined Date</th>
+              </tr>
+            </thead>
+            <tbody id="students-table-body">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Information — Sunrise Institute of Technology</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Chatbot</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chatbot.html" class="nav-link">Chatbot</a>
+        <a href="departments.html" class="nav-link">Departments</a>
+        <a href="faculty.html" class="nav-link">Faculty</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="college-info.html" class="nav-link active">College Info</a>
+        <a href="admin-login.html" class="nav-link nav-admin-btn">🔑 Admin</a>
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link btn-nav">Register</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container text-center">
+      <span class="badge badge-gold mb-2">Campus Guide</span>
+      <h1>College Information & Student Handbook</h1>
+      <p class="hero-subtext">Everything you need to know about timings, admissions, library, leave rules, and facilities at SIT.</p>
+    </div>
+  </header>
+
+  <!-- CONTENT SECTION -->
+  <main class="section">
+    <div class="container">
+
+      <!-- Grid of Information Cards -->
+      <div class="grid grid-2">
+        
+        <!-- Box 1: College Timings -->
+        <div class="info-card-box">
+          <div class="info-card-header">
+            <span class="card-icon">⏱️</span>
+            <h3>College Timings & Office Hours</h3>
+          </div>
+          <ul class="info-list">
+            <li><strong>Working Days:</strong> Monday to Saturday (Closed 2nd & 4th Saturdays)</li>
+            <li><strong>Campus Timings:</strong> 8:30 AM to 4:30 PM</li>
+            <li><strong>Academic Classes:</strong> 9:00 AM to 4:00 PM (Lunch Break: 1:00 PM - 1:45 PM)</li>
+            <li><strong>Administrative Office:</strong> 9:00 AM to 5:00 PM</li>
+            <li><strong>Sundays & Public Holidays:</strong> Campus closed</li>
+          </ul>
+        </div>
+
+        <!-- Box 2: Admissions & Eligibility -->
+        <div class="info-card-box" id="admission">
+          <div class="info-card-header">
+            <span class="card-icon">📋</span>
+            <h3>Admissions & Eligibility</h3>
+          </div>
+          <ul class="info-list">
+            <li><strong>B.Tech Courses:</strong> CSE, ECE, Mechanical, Civil, IT</li>
+            <li><strong>Eligibility:</strong> 10+2 with Physics, Chemistry & Mathematics (Min. 50% aggregate)</li>
+            <li><strong>Admission Process:</strong> State Entrance Rank Counseling & Management Quota</li>
+            <li><strong>Required Documents:</strong> 10th & 12th Marksheets, Transfer Certificate, Entrance Scorecard, Aadhaar, Passport Photos</li>
+            <li><strong>Admission Office Contact:</strong> +91 98765 43210 / admissions@sit.edu</li>
+          </ul>
+        </div>
+
+        <!-- Box 3: Central Library -->
+        <div class="info-card-box">
+          <div class="info-card-header">
+            <span class="card-icon">📚</span>
+            <h3>Central Library Rules & Hours</h3>
+          </div>
+          <ul class="info-list">
+            <li><strong>Location:</strong> 2nd Floor, Main Academic Block</li>
+            <li><strong>Timings:</strong> 8:00 AM to 7:00 PM (Mon-Sat) | Exam Days: Extended to 9:00 PM</li>
+            <li><strong>Book Borrow Limit:</strong> 3 books for undergraduates (14-day renewal)</li>
+            <li><strong>Digital Library:</strong> 50+ computers with free access to IEEE & ScienceDirect journals</li>
+            <li><strong>Librarian:</strong> Mr. V. K. Murthy (library@sit.edu)</li>
+          </ul>
+        </div>
+
+        <!-- Box 4: Student Leave Application -->
+        <div class="info-card-box">
+          <div class="info-card-header">
+            <span class="card-icon">📝</span>
+            <h3>Student Leave Application Procedure</h3>
+          </div>
+          <ol class="info-list-ordered">
+            <li>Obtain a <strong>Leave Application Form</strong> from your Department Office or download from the student portal.</li>
+            <li>Fill in student details, dates of leave, and valid reason (Medical / Personal / Family Event).</li>
+            <li>Attach supporting documents (e.g., Medical Certificate for medical leave > 2 days).</li>
+            <li>Get the signature of your <strong>Faculty Mentor</strong> and <strong>HOD</strong>.</li>
+            <li>Submit the approved form to the Department Office at least 1 day in advance.</li>
+          </ol>
+        </div>
+
+        <!-- Box 5: Campus Facilities -->
+        <div class="info-card-box">
+          <div class="info-card-header">
+            <span class="card-icon">🏫</span>
+            <h3>Campus Facilities & Amenities</h3>
+          </div>
+          <ul class="info-list">
+            <li><strong>Cafeteria & Canteen:</strong> Hygienic food, snacks & beverages (7:30 AM - 6:00 PM)</li>
+            <li><strong>Hostels:</strong> Separate Boys' & Girls' Hostels with Wi-Fi & 24/7 security</li>
+            <li><strong>Sports Complex:</strong> Cricket ground, Football field, Basketball court & Indoor games room</li>
+            <li><strong>Medical Center:</strong> Resident doctor & ambulance service available on campus</li>
+            <li><strong>Wi-Fi & Labs:</strong> 1 Gbps high-speed Wi-Fi across the entire campus</li>
+          </ul>
+        </div>
+
+        <!-- Box 6: Contact & Location -->
+        <div class="info-card-box" id="contact">
+          <div class="info-card-header">
+            <span class="card-icon">📞</span>
+            <h3>Contact Details & Location</h3>
+          </div>
+          <ul class="info-list">
+            <li><strong>College Address:</strong> Sunrise Institute of Technology, SIT Campus Road, Knowledge Park, City - 560001</li>
+            <li><strong>General Enquiry Phone:</strong> +91 (080) 2345-6789 / +91 (080) 2345-6790</li>
+            <li><strong>Email Addresses:</strong> info@sit.edu | principal@sit.edu</li>
+            <li><strong>Website:</strong> www.sit.edu</li>
+            <li><strong>Bus Connectivity:</strong> Regular BMTC / College Buses available from all major city hubs</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Ask Chatbot CTA Banner -->
+      <div class="banner-cta mt-5 text-center">
+        <h2>Have a specific question not listed here?</h2>
+        <p>Our AI Chatbot is trained to answer queries instantly!</p>
+        <a href="chatbot.html" class="btn btn-gold btn-lg mt-3">💬 Open AI Chatbot</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>© 2026 Sunrise Institute of Technology. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     Maven Project Object Model (pom.xml)
+     College AI Chatbot — Java Servlet Backend
+     Build with: mvn clean package
+     Deploy: copy target/college-chatbot.war to Tomcat/webapps/
+ ============================================================ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Project identification -->
+  <groupId>com.college</groupId>
+  <artifactId>college-chatbot</artifactId>
+  <version>1.0</version>
+  <!-- WAR = Web Application Archive (deployable to Tomcat) -->
+  <packaging>war</packaging>
+
+  <name>College AI Chatbot</name>
+  <description>Backend REST API for Sunrise Institute of Technology AI Chatbot</description>
+
+  <properties>
+    <!-- Java version -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+
+    <!-- Jakarta Servlet API (Tomcat 10+ uses Jakarta namespace) -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.0.0</version>
+      <!-- "provided" means Tomcat already has this; don't bundle it -->
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- MySQL JDBC Driver — connects Java to MySQL -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.3.0</version>
+    </dependency>
+
+    <!-- Gson — converts Java objects to JSON (for API responses) -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>college-chatbot</finalName>
+    <plugins>
+      <!-- Maven WAR plugin — packages the project as a .war file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <!-- web.xml location -->
+          <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

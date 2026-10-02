@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chatbot — SIT College</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="chatbot-page">
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Chatbot</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chatbot.html" class="nav-link active">Chatbot</a>
+        <a href="departments.html" class="nav-link">Departments</a>
+        <a href="faculty.html" class="nav-link">Faculty</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="college-info.html" class="nav-link">College Info</a>
+        <a href="admin-login.html" class="nav-link nav-admin-btn">🔑 Admin</a>
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link btn-nav">Register</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN CHATBOT INTERFACE -->
+  <main class="chatbot-layout-wrapper">
+    <div class="container">
+      <div class="chatbot-layout">
+        
+        <!-- SIDEBAR: Suggested Questions & Helper Tips -->
+        <aside class="chatbot-sidebar">
+          <div class="chatbot-info-card">
+            <h3>🤖 SIT AI Assistant</h3>
+            <p class="text-sm">Ask any question about college timings, CSE HOD, admissions, leave application, library, or faculty contact details.</p>
+          </div>
+
+          <div class="chatbot-info-card">
+            <h4>💡 Suggested Questions</h4>
+            <p class="text-sm text-muted mb-2">Click any topic to ask instantly:</p>
+            
+            <!-- Injected by chatbot.js -->
+            <div id="suggested-questions" class="suggested-q-container"></div>
+          </div>
+
+          <div class="chatbot-info-card">
+            <h4>⚙️ Chat Options</h4>
+            <button id="clear-btn" class="btn btn-outline-danger btn-block btn-sm">
+              🗑️ Clear Conversation
+            </button>
+          </div>
+        </aside>
+
+        <!-- MAIN CHAT WINDOW -->
+        <section class="chat-window">
+          
+          <!-- Chat Header -->
+          <div class="chat-header">
+            <div class="chat-bot-avatar">🤖</div>
+            <div class="chat-header-info">
+              <h3>College Assistance Bot</h3>
+              <span class="status-online">● Online & Ready to help</span>
+            </div>
+            <div class="chat-header-badge">
+              <span class="badge badge-gold">AI Powered</span>
+            </div>
+          </div>
+
+          <!-- Messages Scrollable Area -->
+          <div id="chat-messages" class="chat-messages">
+            <!-- Messages added dynamically by chatbot.js -->
+          </div>
+
+          <!-- Input Controls Area -->
+          <div class="chat-input-area">
+            <div class="chat-input-wrapper">
+              <input 
+                type="text" 
+                id="chat-input" 
+                class="chat-input-field" 
+                placeholder="Ask me anything (e.g. Who is the CSE HOD? What are college timings?)" 
+                autocomplete="off"
+              >
+              <button id="send-btn" class="chat-send-btn" title="Send Message">
+                <span>Send</span> 🚀
+              </button>
+            </div>
+            <div class="chat-footer-note text-center">
+              <span>Press <kbd>Enter</kbd> to send • SIT AI Assistant v1.0</span>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer py-2">
+    <div class="container text-center">
+      <p>© 2026 Sunrise Institute of Technology. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

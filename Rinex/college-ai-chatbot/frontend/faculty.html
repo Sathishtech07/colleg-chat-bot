@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Directory — Sunrise Institute of Technology</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Chatbot</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chatbot.html" class="nav-link">Chatbot</a>
+        <a href="departments.html" class="nav-link">Departments</a>
+        <a href="faculty.html" class="nav-link active">Faculty</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="college-info.html" class="nav-link">College Info</a>
+        <a href="admin-login.html" class="nav-link nav-admin-btn">🔑 Admin</a>
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link btn-nav">Register</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="container text-center">
+      <span class="badge badge-gold mb-2">Our Mentors</span>
+      <h1>Faculty Directory</h1>
+      <p class="hero-subtext">Find contact details, email addresses, and designations for all SIT professors and staff.</p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="section">
+    <div class="container">
+
+      <!-- SEARCH & FILTER BAR -->
+      <div class="faculty-controls mb-4">
+        <div class="grid grid-2" style="align-items: center;">
+          
+          <!-- Search input -->
+          <div>
+            <input 
+              type="text" 
+              id="faculty-search" 
+              class="form-control" 
+              placeholder="🔍 Search faculty by name or department..." 
+              onkeyup="filterFaculty()"
+            >
+          </div>
+
+          <!-- Department Category Filter Buttons -->
+          <div class="filter-buttons-group">
+            <button class="btn btn-sm btn-outline-primary active" onclick="setDeptFilter('ALL', this)">All</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="setDeptFilter('Computer Science', this)">CSE</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="setDeptFilter('Electronics', this)">ECE</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="setDeptFilter('Mechanical', this)">Mech</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="setDeptFilter('Civil', this)">Civil</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="setDeptFilter('Information Technology', this)">IT</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FACULTY TABLE CONTAINER -->
+      <div class="data-table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Faculty Name</th>
+              <th>Department</th>
+              <th>Designation</th>
+              <th>Email Address</th>
+              <th>Contact Phone</th>
+            </tr>
+          </thead>
+          <tbody id="faculty-table-body">
+            <!-- Rendered by JS below -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>© 2026 Sunrise Institute of Technology. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    let allFaculty = [];
+    let currentDeptFilter = 'ALL';
+
+    const DEMO_FACULTY_LIST = [
+      { id: 1, name: 'Dr. R. K. Sharma', department: 'Computer Science', designation: 'Professor & HOD', email: 'rksharma@sit.edu', phone: '+91 98765 43210' },
+      { id: 2, name: 'Prof. Ananya Sen', department: 'Computer Science', designation: 'Assistant Professor', email: 'ananya@sit.edu', phone: '+91 98765 43211' },
+      { id: 3, name: 'Dr. Anita Roy', department: 'Electronics', designation: 'Professor & HOD', email: 'anita@sit.edu', phone: '+91 98765 43212' },
+      { id: 4, name: 'Prof. Suresh Kumar', department: 'Electronics', designation: 'Associate Professor', email: 'suresh@sit.edu', phone: '+91 98765 43213' },
+      { id: 5, name: 'Prof. S. N. Verma', department: 'Mechanical', designation: 'Associate Professor & HOD', email: 'verma@sit.edu', phone: '+91 98765 43214' },
+      { id: 6, name: 'Dr. M. K. Gupta', department: 'Civil', designation: 'Professor & HOD', email: 'gupta@sit.edu', phone: '+91 98765 43215' },
+      { id: 7, name: 'Dr. Sunita Rao', department: 'Information Technology', designation: 'Professor & HOD', email: 'sunita@sit.edu', phone: '+91 98765 43216' }
+    ];
+
+    async function loadFaculty() {
+      const tbody = document.getElementById('faculty-table-body');
+      tbody.innerHTML = '<tr><td colspan="5" class="text-center py-3">Loading faculty directory...</td></tr>';
+
+      const data = await apiFetch('/faculty');
+      if (data && Array.isArray(data) && data.length > 0) {
+        allFaculty = data;
+      } else {
+        allFaculty = DEMO_FACULTY_LIST;
+      }
+      renderFacultyTable(allFaculty);
+    }
+
+    function renderFacultyTable(list) {
+      const tbody = document.getElementById('faculty-table-body');
+      if (!list || list.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4">No matching faculty members found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = list.map(item => `
+        <tr>
+          <td><strong>${escapeHtml(item.name)}</strong></td>
+          <td><span class="badge badge-navy">${escapeHtml(item.department)}</span></td>
+          <td>${escapeHtml(item.designation)}</td>
+          <td><a href="mailto:${escapeHtml(item.email)}">${escapeHtml(item.email)}</a></td>
+          <td>${escapeHtml(item.phone || 'N/A')}</td>
+        </tr>
+      `).join('');
+    }
+
+    function filterFaculty() {
+      const searchTerm = document.getElementById('faculty-search').value.toLowerCase().trim();
+      
+      const filtered = allFaculty.filter(f => {
+        const matchesDept = (currentDeptFilter === 'ALL') || f.department.toLowerCase().includes(currentDeptFilter.toLowerCase());
+        const matchesSearch = f.name.toLowerCase().includes(searchTerm) || 
+                              f.department.toLowerCase().includes(searchTerm) || 
+                              f.designation.toLowerCase().includes(searchTerm);
+        return matchesDept && matchesSearch;
+      });
+
+      renderFacultyTable(filtered);
+    }
+
+    function setDeptFilter(dept, btnElement) {
+      currentDeptFilter = dept;
+      document.querySelectorAll('.filter-buttons-group button').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+      filterFaculty();
+    }
+
+    document.addEventListener('DOMContentLoaded', loadFaculty);
+  </script>
+</body>
+</html>

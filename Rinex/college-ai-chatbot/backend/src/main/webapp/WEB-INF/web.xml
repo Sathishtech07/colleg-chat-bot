@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     web.xml — Java Web Application Deployment Descriptor
+     Maps URL patterns to Java Servlet classes.
+     Tomcat reads this file to know which Servlet handles which URL.
+ ============================================================ -->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+  <display-name>College AI Chatbot</display-name>
+
+  <!-- ======================================================
+       CORS Filter — Allows the HTML frontend (on a different
+       port) to communicate with this backend API.
+  ====================================================== -->
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>com.college.chatbot.CorsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/api/*</url-pattern>
+  </filter-mapping>
+
+  <!-- ======================================================
+       Servlet: ChatbotServlet
+       URL: /api/chat?q=your+question
+  ====================================================== -->
+  <servlet>
+    <servlet-name>ChatbotServlet</servlet-name>
+    <servlet-class>com.college.chatbot.ChatbotServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatbotServlet</servlet-name>
+    <url-pattern>/api/chat</url-pattern>
+  </servlet-mapping>
+
+  <!-- ======================================================
+       Servlet: AuthServlet
+       URL: /api/login  and  /api/register
+  ====================================================== -->
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>com.college.chatbot.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/api/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/api/register</url-pattern>
+  </servlet-mapping>
+
+  <!-- ======================================================
+       Servlet: DepartmentServlet
+       URL: /api/departments
+  ====================================================== -->
+  <servlet>
+    <servlet-name>DepartmentServlet</servlet-name>
+    <servlet-class>com.college.chatbot.DepartmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DepartmentServlet</servlet-name>
+    <url-pattern>/api/departments</url-pattern>
+  </servlet-mapping>
+
+  <!-- ======================================================
+       Servlet: FacultyServlet
+       URL: /api/faculty
+  ====================================================== -->
+  <servlet>
+    <servlet-name>FacultyServlet</servlet-name>
+    <servlet-class>com.college.chatbot.FacultyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacultyServlet</servlet-name>
+    <url-pattern>/api/faculty</url-pattern>
+  </servlet-mapping>
+
+  <!-- ======================================================
+       Servlet: EventServlet
+       URL: /api/events  and  /api/announcements
+  ====================================================== -->
+  <servlet>
+    <servlet-name>EventServlet</servlet-name>
+    <servlet-class>com.college.chatbot.EventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventServlet</servlet-name>
+    <url-pattern>/api/events</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EventServlet</servlet-name>
+    <url-pattern>/api/announcements</url-pattern>
+  </servlet-mapping>
+
+  <!-- ======================================================
+       Servlet: AdminServlet
+       URL: /api/admin/*
+  ====================================================== -->
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.college.chatbot.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/api/admin/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- Default session timeout: 30 minutes -->
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+</web-app>

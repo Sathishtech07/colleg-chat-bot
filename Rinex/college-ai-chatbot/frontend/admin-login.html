@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — SIT College AI Chatbot</title>
+
+  <!-- Google Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">SIT <span>Chatbot</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chatbot.html" class="nav-link">Chatbot</a>
+        <a href="departments.html" class="nav-link">Departments</a>
+        <a href="faculty.html" class="nav-link">Faculty</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="college-info.html" class="nav-link">College Info</a>
+        <a href="admin-login.html" class="nav-link active nav-admin-btn">🔑 Admin</a>
+        <div id="nav-auth" style="display: inline-flex; gap: 10px; align-items: center;">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link btn-nav">Register</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ADMIN LOGIN SECTION -->
+  <main class="auth-page">
+    <div class="container">
+      <div class="auth-container">
+        
+        <div class="auth-card border-gold">
+          <div class="auth-header text-center">
+            <div class="auth-icon">🔑</div>
+            <h2>Admin Portal Access</h2>
+            <p>Authorized access for Administrators and Faculty HODs only.</p>
+          </div>
+
+          <!-- Alert element -->
+          <div id="login-alert" class="alert hidden"></div>
+
+          <!-- Login Form with data-admin="true" flag -->
+          <form id="login-form" data-admin="true">
+            <div class="form-group">
+              <label for="email">Admin Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="admin@sit.edu" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Admin Password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" id="login-btn" class="btn btn-gold btn-block btn-lg">
+              🛡️ Admin Login
+            </button>
+          </form>
+
+          <div class="auth-footer text-center">
+            <p><a href="login.html">← Back to Student Login</a></p>
+          </div>
+
+          <!-- Admin Demo Credentials Helper Box -->
+          <div class="demo-box mt-4">
+            <div class="demo-title">🔑 Demo Admin Credentials</div>
+            <div class="demo-row">
+              <span><strong>Email:</strong> admin@sit.edu</span>
+              <span><strong>Password:</strong> admin123</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>© 2026 Sunrise Institute of Technology. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
